@@ -3,7 +3,7 @@ import iconArrow from '../../images/icon-arrow.svg';
 
 export default function Production() {
   return (
-    <section className="production container mx-auto md:flex items-center justify-between">
+    <section className="production container mx-auto md:flex items-center justify-between p-6">
       <img src={illustrationProductive} alt="production image" className="mb-8 mx-auto md:w-1/2" />
       <div className="production--content ml-7">
         <h3 className="text-xl text-white font-bold my-6">Stay productive wherever you are</h3>

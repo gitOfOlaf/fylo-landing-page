@@ -5,7 +5,7 @@ import iconEmail from '../../images/icon-email.svg';
 
 export default function FooterContent() {
   return (
-    <div className="info container mx-auto pt-[20rem] md:pt-[10rem] md:pb-[5rem]">
+    <div className="info container mx-auto pt-[20rem] md:pt-[10rem] md:pb-[5rem] p-6">
       <img src={logo} alt="logo" className="w-[50%] my-10 md:w-auto md:my-0" />
 
       <div className="info--footer py-4 lg:flex justify-between items-start gap-[3rem]">

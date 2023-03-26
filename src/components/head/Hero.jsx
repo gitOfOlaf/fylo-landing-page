@@ -6,7 +6,7 @@ import iconAnyFile from '../../images/icon-any-file.svg';
 
 export default function Hero() {
   return (
-    <section className="hero--section container mx-auto mt-6 text-center lg:max-w-[600px] xl:max-w-[700px]">
+    <section className="hero--section container mx-auto mt-6 text-center lg:max-w-[600px] xl:max-w-[700px] p-6">
       <img src={heroImg} alt="hero image" className="max-w-full md:max-w-[80%] mx-auto" />
 
       <h2 className="text-3xl text-white font-bold my-6 leading-10">All your files in one secure location, accessible anywhere.</h2>
