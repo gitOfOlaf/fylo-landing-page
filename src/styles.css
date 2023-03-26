@@ -22,6 +22,7 @@ html,
 body {
   min-height: 100vh;
   width: 100%;
+  overflow-x: hidden;
 }
 
 #root {
@@ -43,4 +44,28 @@ li {
 
 .social--icons > figure:hover i {
   color: hsl(176, 68%, 64%);
+}
+
+.navList--items,
+.toggleContainer div {
+  transition: transform 1s ease;
+}
+
+.toggleContainer div {
+  margin: 5px 0;
+  width: 25px;
+  height: 3px;
+  background-color: hsl(176, 68%, 64%);
+}
+
+.toggleContainer > .line1.open {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggleContainer > .line2.open {
+  opacity: 0;
+}
+
+.toggleContainer > .line3.open {
+  transform: rotate(45deg) translate(-5px, -6px);
 }

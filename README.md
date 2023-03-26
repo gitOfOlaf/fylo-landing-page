@@ -11,7 +11,6 @@ This is a solution to the [Fylo dark theme landing page challenge on Frontend Me
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
@@ -50,6 +49,7 @@ Users should be able to:
 ### What I learned
 
 I had to practice what I've been learning on react, and I implemented input validation in this challenge, the code snippet is below.
+I also had to implement responsive navbar, which was kind of the trickiest part of this challenge, the code snippet is also below
 
 ```js
 const validateEmail = function (email) {
@@ -57,32 +57,85 @@ const validateEmail = function (email) {
   return regex.test(email);
 };
 
-const [inputValue, setInputValue] = useState('');
-const [message, setMessage] = useState({
-  errorMsg: '',
+const [form, setFormValue] = useState({
+  value: '',
+  msg: '',
   valid: false,
 });
 
 const handleInput = function (e) {
-  setInputValue(e.target.value);
+  setFormValue((previousObj) => {
+    return { ...previousObj, value: e.target.value };
+  });
 };
 
 const handleFormSubmit = function () {
-  if (validateEmail(inputValue)) {
-    setMessage({ errorMsg: 'Email Submitted', valid: true });
-
-    setTimeout(() => setMessage((prevValue) => ({ ...prevValue, errorMsg: '' })), 2000);
+  // if input valid
+  if (validateEmail(form.value)) {
+    setFormValue((previousState) => ({ ...previousState, msg: 'Email Submitted', valid: true }));
+    setTimeout(() => setFormValue((_) => ({ value: '', msg: '', valid: false })), 2000);
     return;
   }
-  setMessage({ errorMsg: 'Please enter a valid email address', valid: false });
 
-  setTimeout(() => setMessage((prevValue) => ({ ...prevValue, errorMsg: '' })), 2000);
+  // if input invalid
+  setFormValue((previousState) => ({ ...previousState, msg: 'Please enter a valid email address', valid: false }));
+  setTimeout(() => {
+    setFormValue((previousState) => ({ ...previousState, msg: '' }));
+  }, 2000);
 };
+
+---
+
+export default function Header() {
+  // false = hidden, true = open
+  const [navState, setNavState] = useState({
+    navBarOpen: false,
+    toggleContainerOpen: false,
+  });
+  const isSmallScreen = useMediaQuery('(max-width:768px)');
+
+  const toggleMenu = function () {
+    setNavState((previousValue) => {
+      return {
+        navBarOpen: !previousValue.navBarOpen,
+        toggleContainerOpen: !previousValue.toggleContainerOpen,
+      };
+    });
+  };
+
+  return (
+    <header className="w-full">
+      <nav className="container mx-auto flex items-center justify-between p-6 relative">
+        <img src={logo} alt="logo" className="w-[100px]" />
+
+        <ul
+          className={`navList--items items-center gap-6 text-white bg-cyanInsideCTA w-full absolute rounded-lg p-6 top-[60px] left-0 md:flex h-[200px] md:relative md:top-0 md:h-auto md:bg-transparent md:p-0 md:w-auto ${
+            isSmallScreen && (navState.navBarOpen ? 'translate-x-[0%]' : 'translate-x-[120%]')
+          }`}
+        >
+          <li className="hover:underline hover:font-bold text-lg">
+            <a href="#">Features</a>
+          </li>
+          <li className="hover:underline text-lg hover:font-bold">
+            <a href="#">Team</a>
+          </li>
+          <li className="hover:underline text-lg hover:font-bold">
+            <a href="#">Sign In</a>
+          </li>
+        </ul>
+
+        <div className="toggleContainer cursor-pointer block md:hidden" onClick={toggleMenu}>
+          <div className={`line1 ${isSmallScreen && navState.toggleContainerOpen && 'open'}`}></div>
+          <div className={`line2 ${isSmallScreen && navState.toggleContainerOpen && 'open'}`}></div>
+          <div className={`line3 ${isSmallScreen && navState.toggleContainerOpen && 'open'}`}></div>
+        </div>
+      </nav>
+
+      <Hero />
+    </header>
+  );
+}
 ```
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
 
 ### Useful resources
 

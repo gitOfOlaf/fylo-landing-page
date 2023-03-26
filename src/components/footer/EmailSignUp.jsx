@@ -6,29 +6,31 @@ export default function EmailSignUp() {
     return regex.test(email);
   };
 
-  const [inputValue, setInputValue] = useState('');
-  const [message, setMessage] = useState({
-    errorMsg: '',
+  const [form, setFormValue] = useState({
+    value: '',
+    msg: '',
     valid: false,
   });
 
   const handleInput = function (e) {
-    setInputValue(e.target.value);
+    setFormValue((previousObj) => {
+      return { ...previousObj, value: e.target.value };
+    });
   };
 
   const handleFormSubmit = function () {
-    if (validateEmail(inputValue)) {
-      setMessage({ errorMsg: 'Email Submitted', valid: true });
-      setTimeout(() => {
-        setMessage((prevValue) => ({ ...prevValue, errorMsg: '' }));
-        // empty the input box if the email is correct
-        setInputValue('');
-      }, 2000);
+    // if input valid
+    if (validateEmail(form.value)) {
+      setFormValue((previousState) => ({ ...previousState, msg: 'Email Submitted', valid: true }));
+      setTimeout(() => setFormValue((_) => ({ value: '', msg: '', valid: false })), 2000);
       return;
     }
 
-    setMessage({ errorMsg: 'Please enter a valid email address', valid: false });
-    setTimeout(() => setMessage((prevValue) => ({ ...prevValue, errorMsg: '' })), 2000);
+    // if input invalid
+    setFormValue((previousState) => ({ ...previousState, msg: 'Please enter a valid email address', valid: false }));
+    setTimeout(() => {
+      setFormValue((previousState) => ({ ...previousState, msg: '' }));
+    }, 2000);
   };
 
   return (
@@ -36,15 +38,15 @@ export default function EmailSignUp() {
       <h3 className="text-white font-bold text-xl">Get early access today</h3>
       <p className="text-white text-base my-3">It only takes a minute to sign up and our free starter tier is extremely generous. If you have any questions, our support team would be happy to help you.</p>
 
-      <div className="signupcontainer my-6 md:flex">
+      <form className="signupcontainer my-6 md:flex" onSubmit={(e) => e.preventDefault()}>
         <div className="input--container w-full md:w-[60%]">
-          <input type="text" placeholder="email@example.com" className="py-4 w-full rounded-full border-none outline-none px-8 text-sm" onChange={handleInput} value={inputValue} />
-          <p className={`errorMSG ${message.valid ? 'text-green-500' : 'text-red-700'} text-xs mt-1`}>{message.errorMsg}</p>
+          <input type="text" placeholder="email@example.com" value={form.value} className="py-4 w-full rounded-full border-none outline-none px-8 text-sm" onChange={handleInput} />
+          <p className={`errorMSG ${form.valid ? 'text-green-500' : 'text-red-700'} text-xs mt-1`}>{form.msg}</p>
         </div>
         <button className="py-4 w-full md:w-[40%] text-white font-bold bg-blueInsideCTA hover:bg-cyanInsideCTA rounded-full border-none lg:ml-4 max-h-[56px]" onClick={handleFormSubmit}>
           Get Started For Free
         </button>
-      </div>
+      </form>
     </section>
   );
 }
