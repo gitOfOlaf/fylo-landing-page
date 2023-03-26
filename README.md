@@ -33,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [click here](https://your-solution-url.com)
-- Live Site URL: [click here](https://your-live-site-url.com)
+- Solution URL: [click here](https://www.frontendmentor.io/solutions/responsive-fylo-landing-page-built-using-react-vite-tailwindcss-wi9_jmrcvA)
+- Live Site URL: [click here](https://fylo-landing-p.netlify.app/)
 
 ## My process
 
@@ -44,7 +44,7 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - Mobile-first workflow
-- [TailwindCSS]() - CSS Framework
+- [TailwindCSS](https://tailwindcss.com/docs/installation) - CSS Framework
 - [React](https://reactjs.org/) - JS library
 
 ### What I learned

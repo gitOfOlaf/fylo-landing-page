@@ -19,12 +19,15 @@ export default function EmailSignUp() {
   const handleFormSubmit = function () {
     if (validateEmail(inputValue)) {
       setMessage({ errorMsg: 'Email Submitted', valid: true });
-
-      setTimeout(() => setMessage((prevValue) => ({ ...prevValue, errorMsg: '' })), 2000);
+      setTimeout(() => {
+        setMessage((prevValue) => ({ ...prevValue, errorMsg: '' }));
+        // empty the input box if the email is correct
+        setInputValue('');
+      }, 2000);
       return;
     }
-    setMessage({ errorMsg: 'Please enter a valid email address', valid: false });
 
+    setMessage({ errorMsg: 'Please enter a valid email address', valid: false });
     setTimeout(() => setMessage((prevValue) => ({ ...prevValue, errorMsg: '' })), 2000);
   };
 
@@ -35,7 +38,7 @@ export default function EmailSignUp() {
 
       <div className="signupcontainer my-6 md:flex">
         <div className="input--container w-full md:w-[60%]">
-          <input type="text" placeholder="email@example.com" className="py-4 w-full rounded-full border-none outline-none px-8 text-sm" onChange={handleInput} />
+          <input type="text" placeholder="email@example.com" className="py-4 w-full rounded-full border-none outline-none px-8 text-sm" onChange={handleInput} value={inputValue} />
           <p className={`errorMSG ${message.valid ? 'text-green-500' : 'text-red-700'} text-xs mt-1`}>{message.errorMsg}</p>
         </div>
         <button className="py-4 w-full md:w-[40%] text-white font-bold bg-blueInsideCTA hover:bg-cyanInsideCTA rounded-full border-none lg:ml-4 max-h-[56px]" onClick={handleFormSubmit}>
