@@ -12,12 +12,10 @@ export default function Header() {
   const isSmallScreen = useMediaQuery('(max-width:768px)');
 
   const toggleMenu = function () {
-    setNavState((previousValue) => {
-      return {
-        navBarOpen: !previousValue.navBarOpen,
-        toggleContainerOpen: !previousValue.toggleContainerOpen,
-      };
-    });
+    setNavState((previousValue) => ({
+      navBarOpen: !previousValue.navBarOpen,
+      toggleContainerOpen: !previousValue.toggleContainerOpen,
+    }));
   };
 
   return (

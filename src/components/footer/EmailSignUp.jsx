@@ -13,8 +13,8 @@ export default function EmailSignUp() {
   });
 
   const handleInput = function (e) {
-    setFormValue((previousObj) => {
-      return { ...previousObj, value: e.target.value };
+    setFormValue((previousState) => {
+      ({ ...previousState, value: e.target.value });
     });
   };
 
