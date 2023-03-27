@@ -38,7 +38,8 @@ li {
   font-family: 'Raleway', sans-serif;
 }
 
-.testimonial {
+.testimonial,
+.navList--items {
   box-shadow: 3px 3px 3px 3px hsla(176, 68%, 64%, 0.02);
 }
 

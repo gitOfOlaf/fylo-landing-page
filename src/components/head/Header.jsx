@@ -26,7 +26,7 @@ export default function Header() {
         <img src={logo} alt="logo" className="w-[100px]" />
 
         <ul
-          className={`navList--items items-center gap-6 text-white bg-cyanInsideCTA w-full absolute rounded-lg p-6 top-[60px] left-0 md:flex h-[200px] md:relative md:top-0 md:h-auto md:bg-transparent md:p-0 md:w-auto ${
+          className={`navList--items items-center gap-6 text-white bg-darkBlueMainBG flex-col md:flex-row w-full absolute rounded-lg p-6 top-[60px] left-0 flex h-[200px] md:relative md:top-0 md:h-auto md:bg-transparent md:p-0 md:w-auto ${
             isSmallScreen && (navState.navBarOpen ? 'translate-x-[0%]' : 'translate-x-[120%]')
           }`}
         >
