@@ -12,8 +12,6 @@ This is a solution to the [Fylo dark theme landing page challenge on Frontend Me
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Useful resources](#useful-resources)
-- [Author](#author)
-
 ## Overview
 
 ### The challenge
@@ -140,9 +138,3 @@ export default function Header() {
 ### Useful resources
 
 - [Font Awesome](https://fontawesome.com/) - The Icons used in the footer section of this page was gotten from fontawesome.
-
-## Author
-
-- Website - [Abdullah Ayoola](https://github.com/abdullah43577)
-- Frontend Mentor - [@abdullah43577](https://www.frontendmentor.io/profile/abdullah43577)
-- Twitter - [@officialayo540](https://twitter.com/officialayo540)
